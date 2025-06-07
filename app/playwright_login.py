@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 
 import redis
 
-redis_conn = redis.Redis(host="35.184.236.198", port=6379, db=0)
+redis_conn = redis.Redis(host="localhost", port=6379, db=0)
 
 
 def send_status(job_id: str, message: str):

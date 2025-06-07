@@ -11,7 +11,7 @@ class LoginRequest(BaseModel):
     password: str
 
 
-@app.post("/simulate-login")
+@app.post("/begin-login")
 async def simulate_login(req: LoginRequest):
     job_id = str(uuid.uuid4())
     enqueue_login_job(job_id, req.username, req.password)

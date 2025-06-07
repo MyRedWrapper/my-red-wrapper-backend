@@ -54,11 +54,8 @@ def perform_login(job_id: str, username: str, password: str):
 
             page.wait_for_url("**/myred/NBL/SA/s/**", timeout=60000)
 
-            print("Final URL:", page.url)
-
             cookies = context.cookies()
 
-            print("Captured cookies:", cookies)
             send_status(job_id, "login complete")
             return cookies
 

@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+aiohttp
+redis
+rq
+python-dotenv
+pydantic
+playwright

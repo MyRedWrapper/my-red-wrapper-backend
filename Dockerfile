@@ -16,17 +16,18 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright dependencies
+# Install Playwright
 RUN playwright install --with-deps
 
 # Copy application files
 COPY . .
 
 # Make start script executable
-RUN chmod +x start.sh
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
-# Expose the port Cloud Run expects
+# Expose port expected by Cloud Run
 EXPOSE 8000
 
-# Start the FastAPI server (do NOT start Redis here)
-CMD ["./start.sh"]
+# Start FastAPI server only (not Redis)
+CMD ["/app/start.sh"]

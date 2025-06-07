@@ -2,13 +2,14 @@ from rq import Queue
 from rq.job import Job
 import redis
 import asyncio
+from app.playwright_login import perform_login
 
 redis_conn = redis.Redis(host="35.184.236.198", port=6379, db=0)
 queue = Queue("default", connection=redis_conn)
 
 
 def enqueue_login_job(job_id: str, username: str, password: str):
-    queue.enqueue("app.playwright_login.perform_login", job_id, username, password, job_id=job_id)
+    queue.enqueue(perform_login, job_id, username, password, job_id=job_id)
 
 
 async def job_status_stream(job_id: str):

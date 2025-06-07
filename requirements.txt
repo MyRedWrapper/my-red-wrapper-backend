@@ -7,3 +7,4 @@ rq
 python-dotenv
 pydantic
 playwright
+rq-scheduler

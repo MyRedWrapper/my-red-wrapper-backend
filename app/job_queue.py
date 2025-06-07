@@ -3,7 +3,7 @@ from rq.job import Job
 import redis
 import asyncio
 
-redis_conn = redis.Redis(host="35.184.236.198", port=6379, db=0)
+redis_conn = redis.Redis(host="localhost", port=6379, db=0)
 queue = Queue("default", connection=redis_conn)
 
 

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Starting FastAPI server..."
+echo "Starting Uvicorn server..."
 
-gunicorn -k uvicorn.workers.UvicornWorker app.main:app \
-  --bind 0.0.0.0:8000 \
-  --timeout 180 \
-  --workers 1
+exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}

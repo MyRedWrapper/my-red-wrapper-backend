@@ -3,8 +3,9 @@ from rq.job import Job
 import redis
 import asyncio
 from app.playwright_login import perform_login
+from config.config import redis_address
 
-redis_conn = redis.Redis(host="35.184.236.198", port=6379, db=0)
+redis_conn = redis.Redis(host=redis_address, port=6379, db=0)
 queue = Queue("default", connection=redis_conn)
 
 
